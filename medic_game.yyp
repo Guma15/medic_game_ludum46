@@ -71,6 +71,14 @@
             }
         },
         {
+            "Key": "6a1921ff-6338-483e-ae3a-ed8bd90672ba",
+            "Value": {
+                "id": "016d7fa5-ea2b-44e2-808b-7137336c39bf",
+                "resourcePath": "views\\015ee2cd-ddfd-45c5-b468-821816084b9e-room.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "6ab1fe0f-b175-469e-adba-b67945fd0e25",
             "Value": {
                 "id": "3b18b9ef-20a0-4145-a514-84f7e9298d2d",
@@ -140,6 +148,14 @@
                 "id": "6c88dad1-d3f9-4bca-912b-1380047394c2",
                 "resourcePath": "objects\\omedic\\omedic.yy",
                 "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "a920e112-2b2d-4116-9339-61cc58c209c7",
+            "Value": {
+                "id": "fa8dbd99-1aae-4302-9f6a-a5636ec174e6",
+                "resourcePath": "rooms\\room1\\room1.yy",
+                "resourceType": "GMRoom"
             }
         },
         {

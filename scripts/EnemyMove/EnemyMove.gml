@@ -2,11 +2,10 @@
 
 if(timer > 0)
 {
+	//calculate movement speed based on direction
 	hSpeed = lengthdir_x(moveSpeed, moveDirection);
 	vSpeed = lengthdir_y(moveSpeed, moveDirection);	
-	
 	CollisionScript()
-	show_debug_message(moveDirection)
 	
 	timer--;
 }

@@ -6,7 +6,7 @@ if(timer > 0)
 	vSpeed = lengthdir_y(moveSpeed, moveDirection);	
 	
 	CollisionScript()
-	show_debug_message(moveDirection)
+	//show_debug_message(moveDirection)
 	
 	timer--;
 }

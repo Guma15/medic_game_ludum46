@@ -2,7 +2,7 @@
     "id": "a78fd34f-9f96-40e6-a0ab-31e32bc9cdbd",
     "modelName": "GMObject",
     "mvc": "1.0",
-    "name": "omedic",
+    "name": "oPlayer",
     "eventList": [
         {
             "id": "a7b9dcce-fe70-4382-9400-4c207185491b",
@@ -22,6 +22,16 @@
             "collisionObjectId": "00000000-0000-0000-0000-000000000000",
             "enumb": 0,
             "eventtype": 0,
+            "m_owner": "a78fd34f-9f96-40e6-a0ab-31e32bc9cdbd"
+        },
+        {
+            "id": "f763d1a3-eeb1-4ff7-893b-5aa69f8cb33e",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 8,
             "m_owner": "a78fd34f-9f96-40e6-a0ab-31e32bc9cdbd"
         }
     ],
@@ -43,6 +53,6 @@
     "physicsStartAwake": true,
     "properties": null,
     "solid": false,
-    "spriteId": "d07aa1d7-10d2-43e3-91f7-083c0caec49d",
+    "spriteId": "19aa9893-1c03-49fa-a96e-e80bf9d7a0b3",
     "visible": true
 }

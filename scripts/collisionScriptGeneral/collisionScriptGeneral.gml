@@ -5,29 +5,30 @@
 
 var v_speed = argument0;
 var h_speed = argument1;
-var p_col = argument2;
 
 var _collision = false;
 
 //horizontal tiles
-if (tilemap_get_at_pixel(p_col, x + h_speed, y))
+if (instance_position(x + h_speed, y, oWall))
 {
-	x -= x mod TILE_SIZE;
-	if(sign(h_speed) == 1) x += TILE_SIZE - 1;
+	while(!instance_position(x + sign(h_speed), y, oWall))
+	{
+		x += sign(h_speed);	
+	}
 	h_speed = 0;
-	_collision = true;
 }
 
 //horizontal move commit
 x += h_speed;
 
 //vertical tiles
-if (tilemap_get_at_pixel(p_col, x, y + v_speed))
+if (instance_position(x, y  + v_speed, oWall))
 {
-	y -= y mod TILE_SIZE;
-	if(sign(v_speed) == 1) y += TILE_SIZE - 1;
+	while(!instance_position(x, y+ sign(v_speed), oWall))
+	{
+		y += sign(v_speed);	
+	}
 	v_speed = 0;
-	_collision = true;
 }
 
 //vertical move commit

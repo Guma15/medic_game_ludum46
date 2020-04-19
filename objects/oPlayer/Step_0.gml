@@ -1,58 +1,39 @@
 /// @Movement
 
-hInput = keyboard_check(ord("D")) - keyboard_check(ord("A"));
-vInput = keyboard_check(ord("S")) - keyboard_check(ord("W"));
+script_execute(state);
 
-if(hInput != 0 or vInput != 0) {
-	dir = point_direction(0,0,hInput,vInput);
-	show_debug_message(dir)
-	moveX = lengthdir_x(spd, dir);
-	moveY = lengthdir_y(spd, dir);
-
-	x += moveX;
-	y += moveY;
+if(keyboard_check_pressed(vk_space))
+{
+	var _colX = lengthdir_x(25, dir);
+	var _colY = lengthdir_y(25, dir);
 	
-	switch(dir) {
-		case 0: 
-			collidedEnemy = collision_line(x, y, x + 25, y, all ,false, true);
-			break;
-		case 45: 
-			collidedEnemy = collision_line(x + 15, y - 15, x, y, all ,false, true);
-			break;
-		case 90: 
-			collidedEnemy = collision_line(x, y, x, y - 25, all ,false, true);
-			break;
-		case 135: 
-			collidedEnemy = collision_line(x - 15, y - 15, x, y, all ,false, true);
-			break;
-		case 180: 
-			collidedEnemy = collision_line(x, y, x - 25, y, all ,false, true);
-			break;
-		case 225: 
-			collidedEnemy = collision_line(x - 15, y + 15, x, y, all ,false, true);
-			break;
-		case 270: 
-			collidedEnemy = collision_line(x, y, x, y + 25, all ,false, true);
-			break;
-		case 315: 
-			collidedEnemy = collision_line(x + 15, y + 15, x, y, all ,false, true);
-			break;
+	if(!carry)
+	{		
+		if(collision_line(x, y, x + _colX, y + _colY, oPatient, false, true))
+		{
+			instance_destroy(oPatient);
+			sprite = sPlayerCarry;
+			carry = true;
+		}
 	}
-	show_debug_message(collidedEnemy);
-	//Set animation
-	/*switch(dir) {
-		case 0: sprite_index = sPlayer_right; break;
-		case 45: sprite_index = sPlayer_back; break;
-		case 90: sprite_index = sPlayer_back; break;
-		case 135: sprite_index = sPlayer_back; break;
-		case 180: sprite_index = sPlayer_left; break;
-		case 225: sprite_index = sPlayer_front; break;
-		case 270: sprite_index = sPlayer_front; break;
-		case 315: sprite_index = sPlayer_front; break;
-	}*/
-	
-	//collisionScriptGeneral(moveY,moveX,playerCollision)
-	
-} else {
-	image_index = 0;
+	else
+	{
+		instance_create_depth(x, y, depth, oPatient);
+		sprite = sPlayerSprite;
+		carry = false;
+	}
+}
+
+if(keyboard_check_pressed(vk_control) && !carry)
+{
+	state = PlayerShoot;
+	animate = PlayerShootAnimate;
+	timer = shootDelay;
+}
+
+var _bullet = instance_place(x, y, oBullet);
+if(_bullet != noone && !_bullet.friendly)
+{
+	with(_bullet) instance_destroy();
+	//take damage etc.	
 }

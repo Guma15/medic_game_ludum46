@@ -1,4 +1,4 @@
-	
+	sprite = sEnemySprite;
 	y_frame = 0;
 	anim_length = 2;
 

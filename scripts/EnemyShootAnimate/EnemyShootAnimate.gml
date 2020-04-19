@@ -1,7 +1,17 @@
 	
+	if(bulletReload < 15)
+	{
+		image_speed = 5;
+		sprite = sEnemyShoot;
+	}
+	else
+	{
+		sprite = sEnemySprite;
+		anim_speed = 0;
+	}
+	
 	y_frame = 0;
 	anim_length = 3;
-
 	var _dir = point_direction(oPlayer.x, oPlayer.y, x, y);
 	if(_dir >= 45 && _dir < 135 ) {
 		y_frame = 0;

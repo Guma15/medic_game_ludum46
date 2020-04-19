@@ -13,10 +13,12 @@ sprite_index = sPatientSprite;
 hp = 3;
 enum VIT
 {
-	HEALTHY,
-	BLEEDING,
-	PAIN,
-	BROKEN
+	HEALTHY = 0,
+	BLEEDING = 1,
+	PAIN = 2,
+	BROKEN = 3
 }
 
 vigor = VIT.HEALTHY;
+bleedTime = 600;
+painTime = irandom_range(100, 300);

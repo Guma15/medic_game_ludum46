@@ -8,7 +8,9 @@ if (distance_to_point(destX,destY) <= 5)
         destY = random(room_height)
     }
     until(!place_meeting(destX,destY,oWall))
-	state = EnemyIdle;
+	state = EnemyShoot;
+	animate = EnemyShootAnimate;
+	timer = shootTime;
     //this is so the target destination isn't inside a soling block
 } 
 
@@ -26,4 +28,9 @@ if(cover == noone || distance_to_object(cover) > 1)
 {
 	mp_potential_step(destX,destY,1,false)
 }
-
+else 
+{
+	stop = true;
+	state = EnemyShoot;
+	animate = EnemyShootAnimate;
+}

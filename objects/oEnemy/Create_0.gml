@@ -23,6 +23,7 @@ state = EnemyMove;
 animate = EnemyMoveAnimate;
 cover = noone;
 sprite = sEnemySprite;
+stop = false;
 
 //how long to remain in a state
 timer = 60;

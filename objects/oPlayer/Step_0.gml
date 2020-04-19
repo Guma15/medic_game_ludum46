@@ -29,6 +29,7 @@ if(keyboard_check_pressed(vk_space))
 
 if(keyboard_check_pressed(ord("F")))
 {
+	state = PlayerTreating;
 	var _colX = lengthdir_x(25, dir);
 	var _colY = lengthdir_y(25, dir);
 	if(collision_line(x, y, x + _colX, y + _colY, oPatient, false, true))

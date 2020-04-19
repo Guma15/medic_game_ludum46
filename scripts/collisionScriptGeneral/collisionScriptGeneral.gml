@@ -1,7 +1,6 @@
-/// @description collisionScriptGeneral(vspeed,hspeed,collision)
+/// @description collisionScriptGeneral(v_speed,h_speed)
 /// @param vspeed
 /// @param hspeed
-/// @param pcol
 
 var v_speed = argument0;
 var h_speed = argument1;

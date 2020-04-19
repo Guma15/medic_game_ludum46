@@ -127,6 +127,14 @@
             }
         },
         {
+            "Key": "493ddb28-ef40-4cf2-9dab-180d5e4863b8",
+            "Value": {
+                "id": "80a4d9b4-55f6-43c4-9771-33f93a624391",
+                "resourcePath": "objects\\oUI\\oUI.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "49da9f20-252d-471c-b8ef-ae1e328c1cff",
             "Value": {
                 "id": "49ffa432-b757-4ce7-8be2-c6a093d2f8a3",

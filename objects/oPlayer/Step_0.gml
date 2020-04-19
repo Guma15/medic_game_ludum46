@@ -10,18 +10,60 @@ if(keyboard_check_pressed(vk_space))
 	{		
 		if(collision_line(x, y, x + _colX, y + _colY, oPatient, false, true))
 		{
-			instance_deactivate_object(oPatient);
+			oPatient.x = -9999;
+			oPatient.y = -9999;
 			sprite = sPlayerCarry;
 			carry = true;
+			spd = 1;
 		}
 	}
 	else
 	{
-		instance_activate_object(oPatient);
 		oPatient.x = x;
 		oPatient.y = y;
 		sprite = sPlayerSprite;
 		carry = false;
+		spd = 2;
+	}
+}
+
+if(keyboard_check_pressed(ord("F")))
+{
+	var _colX = lengthdir_x(25, dir);
+	var _colY = lengthdir_y(25, dir);
+	if(collision_line(x, y, x + _colX, y + _colY, oPatient, false, true))
+	{
+		switch(oPatient.vigor)
+		{
+			case VIT.HEALTHY:
+				if(medkit > 0 && oPatient.hp < 3)
+				{
+					medkit--;
+					oPatient.hp = 3;
+				}
+				break;
+			case VIT.BLEEDING:
+				if(bandage > 0)
+				{
+					bandage--;
+					oPatient.vigor = VIT.HEALTHY;
+				}	
+				break;
+			case VIT.PAIN:
+				if(morphine > 0)
+				{
+					morphine--;
+					oPatient.vigor = VIT.HEALTHY;
+				}	
+				break;
+			case VIT.BROKEN:
+				if(crutch > 0)
+				{
+					crutch--;
+					oPatient.vigor = VIT.HEALTHY;
+				}	
+				break;
+		}
 	}
 }
 
@@ -33,7 +75,7 @@ if(keyboard_check_pressed(vk_control) && !carry)
 }
 
 
-itemID = instance_place(x, y, oPickup);
+itemID = collision_point(x, y, oPickup, false, true);
 if( itemID != noone)
 {
 	item = variable_instance_get(itemID, "sprite");
@@ -50,6 +92,10 @@ if( itemID != noone)
 		crutch++;
 		pickUp = true;
 	}
+	if(item == 3 && medkit < 2) {
+		medkit++;
+		pickUp = true;
+	}
 	//Destroy only if picked up.
 	if (pickUp) {
 		instance_destroy(itemID);
@@ -60,5 +106,14 @@ var _bullet = instance_place(x, y, oBullet);
 if(_bullet != noone && !_bullet.friendly)
 {
 	with(_bullet) instance_destroy();
-	//take damage etc.	
+	hp--;
 }
+
+if(hp <= 0)
+	{
+		if(medkit > 0)
+		{
+			hp = 2;
+			medkit--;
+		}
+	}

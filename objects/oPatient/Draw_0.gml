@@ -20,4 +20,3 @@ if(vigor > 0)
 {
 	draw_sprite(sStatus, vigor-1, x, y - 20);
 }
-

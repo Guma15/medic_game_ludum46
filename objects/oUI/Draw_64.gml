@@ -6,4 +6,3 @@ draw_text(10, 600, "Bandage: " + string(oPlayer.bandage));
 draw_text(10, 615, "Morphine: " + string(oPlayer.morphine));
 draw_text(10, 630, "Crutch: " + string(oPlayer.crutch));
 draw_text(10, 645, "Medkit: " + string(oPlayer.medkit));
-

@@ -2,6 +2,7 @@
 var _bullet = instance_place(x, y, oBullet);
 if(_bullet != noone && !_bullet.friendly)
 {
+	audio_play_sound(snHit, 0, false);
 	with(_bullet) instance_destroy();
 	if(vigor == 0)
 	{
@@ -21,7 +22,6 @@ if(hp <= 0)
 			spd = 2;			
 		}
 	}
-	instance_destroy();
 }
 
 switch(vigor)
@@ -62,3 +62,5 @@ switch(vigor)
 		painTime--;
 		break;
 }
+
+depth = -bbox_bottom;

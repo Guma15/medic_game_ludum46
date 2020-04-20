@@ -4,9 +4,8 @@ randomize();
 spd = 2;
 sprite = sPlayerSprite;
 
-
 x_offset = 15;
-y_offset = 22;
+y_offset = 26;
 frame_size = 32;
 
 x_frame = 0;
@@ -15,6 +14,8 @@ y_frame = 0;
 anim_length = 2;
 anim_speed = 5;
 
+ladder = noone;
+recover = 0;
 hp = 5;
 state = PlayerMove;
 animate = PlayerMoveAnimate;

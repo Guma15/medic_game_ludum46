@@ -8,9 +8,9 @@ var h_speed = argument1;
 var _collision = false;
 
 //horizontal tiles
-if (instance_position(x + h_speed, y, oWall))
+if (instance_position(x + h_speed, y, pWall))
 {
-	while(!instance_position(x + sign(h_speed), y, oWall))
+	while(!instance_position(x + sign(h_speed), y, pWall))
 	{
 		x += sign(h_speed);	
 	}
@@ -21,9 +21,9 @@ if (instance_position(x + h_speed, y, oWall))
 x += h_speed;
 
 //vertical tiles
-if (instance_position(x, y  + v_speed, oWall))
+if (instance_position(x, y  + v_speed, pWall))
 {
-	while(!instance_position(x, y+ sign(v_speed), oWall))
+	while(!instance_position(x, y+ sign(v_speed), pWall))
 	{
 		y += sign(v_speed);	
 	}

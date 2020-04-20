@@ -9,6 +9,7 @@ moveDirY = 0;
 destX = x;
 destY = y;
 
+
 //animation stuff
 x_frame = 0;
 y_frame = 0;
@@ -24,6 +25,8 @@ animate = EnemyMoveAnimate;
 cover = noone;
 sprite = sEnemySprite;
 stop = false;
+targetDist = 1;
+shootT = oPlayer;
 
 //how long to remain in a state
 timer = 60;

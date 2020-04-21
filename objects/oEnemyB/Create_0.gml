@@ -1,7 +1,7 @@
 /// @description -
 
 //movement variables
-moveSpeed = 1;
+moveSpeed = 4;
 hSpeed = 0;
 vSpeed = 0;
 moveDirX = -1;

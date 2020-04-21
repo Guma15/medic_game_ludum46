@@ -51,7 +51,22 @@
     "physicsShape": 1,
     "physicsShapePoints": null,
     "physicsStartAwake": true,
-    "properties": null,
+    "properties": [
+        {
+            "id": "80ce1375-dc7e-4c32-bc8a-029be76de3a7",
+            "modelName": "GMObjectProperty",
+            "mvc": "1.0",
+            "listItems": null,
+            "multiselect": false,
+            "rangeEnabled": false,
+            "rangeMax": 10,
+            "rangeMin": 0,
+            "resourceFilter": 1023,
+            "value": "0",
+            "varName": "vigor",
+            "varType": 0
+        }
+    ],
     "solid": false,
     "spriteId": "eda8a7af-51e6-400e-9c9d-8daa101f4558",
     "visible": true

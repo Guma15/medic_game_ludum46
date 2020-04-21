@@ -1,7 +1,6 @@
 	sprite = sEnemyShoot;
-	anim_speed = 5;
-	show_debug_message(anim_speed)
-	if(stop && bulletReload > 20)
+	anim_speed = 15;
+	if(stop && bulletReload > 4)
 	{
 		sprite = sEnemySprite; 
 		anim_speed = 0;

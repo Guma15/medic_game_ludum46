@@ -27,6 +27,7 @@ sprite = sEnemySprite;
 stop = false;
 targetDist = 1;
 shootT = oPlayer;
+inCamera = false;
 
 //how long to remain in a state
 timer = 60;

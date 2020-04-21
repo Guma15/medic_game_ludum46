@@ -22,6 +22,7 @@ if(hp <= 0)
 			spd = 2;			
 		}
 	}
+	oPlayer.lose = true;
 }
 
 switch(vigor)
@@ -30,12 +31,7 @@ switch(vigor)
 		bleedTime = 600;
 		break;
 	case VIT.BLEEDING:
-		if(bleedTime <= 0)
-		{
-			hp--
-			bleedTime = 600;
-		}
-		bleedTime--;
+			oUI.time = oUI.time - 2/room_speed;
 		break;
 	case VIT.BROKEN:
 		with(oPlayer)

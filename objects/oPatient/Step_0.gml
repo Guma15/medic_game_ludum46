@@ -2,6 +2,7 @@
 var _bullet = instance_place(x, y, oBullet);
 if(_bullet != noone && !_bullet.friendly)
 {
+	audio_play_sound(snHit, 0, false);
 	with(_bullet) instance_destroy();
 	if(vigor == 0)
 	{
@@ -21,7 +22,7 @@ if(hp <= 0)
 			spd = 2;			
 		}
 	}
-	instance_destroy();
+	oPlayer.lose = true;
 }
 
 switch(vigor)
@@ -30,12 +31,7 @@ switch(vigor)
 		bleedTime = 600;
 		break;
 	case VIT.BLEEDING:
-		if(bleedTime <= 0)
-		{
-			hp--
-			bleedTime = 600;
-		}
-		bleedTime--;
+			oUI.time = oUI.time - 2/room_speed;
 		break;
 	case VIT.BROKEN:
 		with(oPlayer)
@@ -62,3 +58,5 @@ switch(vigor)
 		painTime--;
 		break;
 }
+
+depth = -bbox_bottom;

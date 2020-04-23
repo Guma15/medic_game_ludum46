@@ -19,6 +19,6 @@ enum VIT
 	BROKEN = 3
 }
 
-vigor = VIT.HEALTHY;
+
 bleedTime = 600;
 painTime = irandom_range(100, 300);

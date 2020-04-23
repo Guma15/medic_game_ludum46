@@ -1,78 +1,8 @@
 /// @Movement
 
-script_execute(state);
-
-if(keyboard_check_pressed(vk_space))
+if(state != noone)
 {
-	var _colX = lengthdir_x(25, dir);
-	var _colY = lengthdir_y(25, dir);	
-	if(!carry)
-	{		
-		if(collision_line(x, y, x + _colX, y + _colY, oPatient, false, true))
-		{
-			oPatient.x = -9999;
-			oPatient.y = -9999;
-			sprite = sPlayerCarry;
-			carry = true;
-			spd = 1;
-		}
-	}
-	else
-	{
-		oPatient.x = x;
-		oPatient.y = y;
-		sprite = sPlayerSprite;
-		carry = false;
-		spd = 2;
-	}
-}
-
-if(keyboard_check_pressed(ord("F")))
-{
-	state = PlayerTreating;
-	var _colX = lengthdir_x(25, dir);
-	var _colY = lengthdir_y(25, dir);
-	if(collision_line(x, y, x + _colX, y + _colY, oPatient, false, true))
-	{
-		switch(oPatient.vigor)
-		{
-			case VIT.HEALTHY:
-				if(medkit > 0 && oPatient.hp < 3)
-				{
-					medkit--;
-					oPatient.hp = 3;
-				}
-				break;
-			case VIT.BLEEDING:
-				if(bandage > 0)
-				{
-					bandage--;
-					oPatient.vigor = VIT.HEALTHY;
-				}	
-				break;
-			case VIT.PAIN:
-				if(morphine > 0)
-				{
-					morphine--;
-					oPatient.vigor = VIT.HEALTHY;
-				}	
-				break;
-			case VIT.BROKEN:
-				if(crutch > 0)
-				{
-					crutch--;
-					oPatient.vigor = VIT.HEALTHY;
-				}	
-				break;
-		}
-	}
-}
-
-if(keyboard_check_pressed(vk_control) && !carry)
-{
-	state = PlayerShoot;
-	animate = PlayerShootAnimate;
-	timer = shootDelay;
+	script_execute(state);
 }
 
 
@@ -99,6 +29,7 @@ if( itemID != noone)
 	}
 	//Destroy only if picked up.
 	if (pickUp) {
+		audio_play_sound(snItemPickup, 0, false);
 		instance_destroy(itemID);
 	}
 }
@@ -107,7 +38,29 @@ var _bullet = instance_place(x, y, oBullet);
 if(_bullet != noone && !_bullet.friendly)
 {
 	with(_bullet) instance_destroy();
-	hp--;
+	
+	if(carry)
+	{
+		if(oPatient.vigor == 0)
+		{
+			oPatient.vigor = choose(VIT.BLEEDING, VIT.BROKEN, VIT.PAIN);
+		}	
+		oPatient.hp--;
+		carry = !carry;
+		oPatient.x = x;
+		oPatient.y = y;
+		sprite = sPlayerSprite;
+		spd = 2;
+	}
+	else if(recover <= 0)
+	{
+		audio_play_sound(snHit, 0, false);
+		oCamera.shakeLength = 2;
+		oCamera.shakeMagnitude = 1;
+		oCamera.shakeRemain = 4;
+		hp--;
+		recover = 60;
+	}
 }
 
 if(hp <= 0)
@@ -117,4 +70,16 @@ if(hp <= 0)
 			hp = 2;
 			medkit--;
 		}
+		else
+		{
+			lose = true;
+			state = noone;
+			animate = PlayerDeath;
+		}
 	}
+if(instance_place(x, y, oGoal) && carry)
+{
+	win = true;		
+}
+recover--;
+depth = -bbox_bottom;

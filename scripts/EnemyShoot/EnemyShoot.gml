@@ -1,27 +1,38 @@
 switch(timer)
 {
 	case shootTime:
-		if(bulletReload < 0)
+		if(bulletReload < 0 || !stop)
 		{
-			animate = EnemyShootAnimate;
-			var _dirX = lengthdir_x(10, oPlayer.x);
-			var _dirY = lengthdir_y(10, oPlayer.y);
-			with(instance_create_depth(x + _dirX, y - 10 + _dirY, layer_get_id("Bullet"), oBullet))
+			var viewX = camera_get_view_width(view_camera[0])/2;
+			var viewY = camera_get_view_height(view_camera[0])/2;
+			if(x > oCamera.x - viewX && x < oCamera.x + viewX 
+			&& y > oCamera.y - viewY && y < oCamera.y + viewY)
 			{
-				direction = point_direction(x, y, oPlayer.x, oPlayer.y);
-				speed = 3;
+				animate = EnemyShootAnimate;
+				audio_play_sound(snEnemyShot, 0, false);
+				var _dirX = sign(oPlayer.x - oPlayer.xprevious) * 32;
+				var _dirY = sign(oPlayer.y - oPlayer.yprevious) * 32;
+				with(instance_create_depth(x , y - 10, layer_get_id("Bullet"), oBullet))
+				{
+					direction = point_direction(x, y, oPlayer.x + _dirX, oPlayer.y - 10 + _dirY);
+					speed = 3;
+					timer = 120;
+				}
 			}
-			bulletReload = irandom_range(200, 400);
+			bulletReload = irandom_range(200, 300);
 		}
 		break;
 		
 	case 0:
 		if(!stop)
 		{
-			state = EnemyIdle;
+			state = EnemyMove;
 			animate = EnemyMoveAnimate;
 		}
-		else timer = shootTime + 1;
+		else 
+		{
+			timer = shootTime + 1;
+		}
 		break;
 }
 timer--

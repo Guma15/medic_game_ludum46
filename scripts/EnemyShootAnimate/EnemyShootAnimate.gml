@@ -1,14 +1,11 @@
-	
-	if(bulletReload < 15)
+	sprite = sEnemyShoot;
+	anim_speed = 15;
+	if(stop && bulletReload > 4)
 	{
-		image_speed = 5;
-		sprite = sEnemyShoot;
-	}
-	else
-	{
-		sprite = sEnemySprite;
+		sprite = sEnemySprite; 
 		anim_speed = 0;
 	}
+
 	
 	y_frame = 0;
 	anim_length = 3;
@@ -25,6 +22,7 @@
 	else if(_dir >= 135 && _dir < 225) {
 		y_frame = 2;
 	}
-
 	x_frame += anim_speed/room_speed;
 	if(x_frame >= anim_length) x_frame = 0;
+	
+	if(stop && bulletReload > 30) x_frame = 0;

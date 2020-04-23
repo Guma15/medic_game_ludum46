@@ -4,6 +4,8 @@ randomize();
 spd = 2;
 sprite = sPlayerSprite;
 
+lose = false;
+win = false;
 x_offset = 15;
 y_offset = 26;
 frame_size = 32;

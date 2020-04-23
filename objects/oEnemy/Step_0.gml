@@ -19,3 +19,5 @@ if(_bullet != noone && _bullet.friendly && state != noone)
 }
 
 depth = -bbox_bottom;
+
+if(oPlayer.lose) state = noone;

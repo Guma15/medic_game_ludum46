@@ -1,5 +1,5 @@
-hInput = keyboard_check(ord("D")) - keyboard_check(ord("A"));
-vInput = keyboard_check(ord("S")) - keyboard_check(ord("W"));
+hInput = keyboard_check(vk_right) - keyboard_check(vk_left);
+vInput = keyboard_check(vk_down) - keyboard_check(vk_up);
 
 if(carry) sprite = sPlayerCarry else sprite = sPlayerSprite;
 if(hInput != 0 or vInput != 0) {
@@ -14,7 +14,7 @@ if(hInput != 0 or vInput != 0) {
 	image_index = 0;
 }
 
-if(keyboard_check_pressed(vk_space))
+if(keyboard_check_pressed(ord("X")))
 {
 	var _colX = lengthdir_x(25, dir);
 	var _colY = lengthdir_y(25, dir);	
@@ -26,7 +26,7 @@ if(keyboard_check_pressed(vk_space))
 			oPatient.y = -9999;
 			sprite = sPlayerCarry;
 			carry = true;
-			spd = 1;
+			spd = 0.75;
 		}
 	}
 	else
@@ -49,7 +49,7 @@ if(keyboard_check_pressed(vk_space))
 
 }
 
-if(keyboard_check_pressed(ord("F")))
+if(keyboard_check_pressed(ord("C")))
 {
 	var _colX = lengthdir_x(25, dir);
 	var _colY = lengthdir_y(25, dir);
@@ -93,7 +93,7 @@ if(keyboard_check_pressed(ord("F")))
 	}
 }
 
-if(keyboard_check_pressed(vk_control) && !carry)
+if(keyboard_check_pressed(ord("Z")) && !carry)
 {
 	audio_play_sound(snShoot, 0, false);
 	state = PlayerShoot;

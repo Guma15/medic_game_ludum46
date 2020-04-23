@@ -1,7 +1,9 @@
 /// @Movement
 
-script_execute(state);
-
+if(state != noone)
+{
+	script_execute(state);
+}
 
 
 itemID = collision_point(x, y, oPickup, false, true);
@@ -68,7 +70,16 @@ if(hp <= 0)
 			hp = 2;
 			medkit--;
 		}
+		else
+		{
+			lose = true;
+			state = noone;
+			animate = PlayerDeath;
+		}
 	}
-
+if(instance_place(x, y, oGoal) && carry)
+{
+	win = true;		
+}
 recover--;
 depth = -bbox_bottom;
